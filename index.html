@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IELTS Study Tracker</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%237c3aed'/><text x='16' y='22' font-size='16' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>IE</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn only-mobile" id="menuBtn" aria-label="Menu">☰</button>
+    <a class="brand" href="#/">
+      <span class="brand-mark">IE</span>
+      <span class="brand-text">IELTS Study Tracker</span>
+    </a>
+    <div class="top-progress" title="Overall progress">
+      <div class="bar"><span id="topBar"></span></div>
+      <span id="topPct">0%</span>
+    </div>
+    <nav class="top-actions">
+      <a class="btn ghost" href="#/notes">📝 <span class="hide-sm">My notes</span></a>
+      <button class="btn ghost" id="backupBtn">💾 <span class="hide-sm">Backup</span></button>
+      <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">🌓</button>
+    </nav>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar" id="sidebar">
+      <div class="side-tools">
+        <input type="search" id="search" placeholder="Search topics… (e.g. passive, travel)" autocomplete="off">
+        <div class="chips" id="skillChips"></div>
+      </div>
+      <div class="tree" id="tree"></div>
+    </aside>
+    <div class="scrim" id="scrim"></div>
+
+    <main class="main" id="main"></main>
+
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer-head">
+        <div>
+          <div class="drawer-kicker" id="drawerKicker"></div>
+          <div class="drawer-title" id="drawerTitle"></div>
+        </div>
+        <div class="drawer-tools" id="drawerTools">
+          <button class="icon-btn" id="dzOut" title="Zoom out (Ctrl + wheel)" aria-label="Zoom out">−</button>
+          <button class="dz-val" id="dzVal" title="Reset to 100%">100%</button>
+          <button class="icon-btn" id="dzIn" title="Zoom in (Ctrl + wheel)" aria-label="Zoom in">+</button>
+          <button class="icon-btn" id="dzSplit" title="Split screen (hides the menu)" aria-label="Split screen">⇔</button>
+        </div>
+        <button class="icon-btn" id="drawerClose" aria-label="Close">✕</button>
+      </div>
+      <div class="drawer-body" id="drawerBody"></div>
+    </aside>
+  </div>
+
+  <dialog id="backupDlg">
+    <form method="dialog" class="dlg">
+      <h3>Backup</h3>
+      <p class="muted">Your progress and notes are stored in this browser. Export them to move to another computer or to keep them safe.</p>
+      <div class="dlg-actions">
+        <button type="button" class="btn primary" id="exportBtn">⬇ Export (JSON)</button>
+        <label class="btn">⬆ Import<input type="file" id="importFile" accept="application/json" hidden></label>
+        <button type="button" class="btn danger" id="resetBtn">Reset</button>
+      </div>
+      <div class="dlg-foot"><button class="btn ghost">Close</button></div>
+    </form>
+  </dialog>
+
+  <div class="player" id="player" hidden>
+    <span class="player-icon">🎧</span>
+    <div class="player-info" id="playerInfo"></div>
+    <div class="player-chips" id="playerChips"></div>
+    <div class="player-frame" id="playerFrame"></div>
+    <button class="icon-btn" id="playerClose" aria-label="Close player" title="Close">✕</button>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="data/books.js"></script>
+  <script src="data/gaps.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
